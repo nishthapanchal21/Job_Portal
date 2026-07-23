@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seekers Application</title>
+    <style>
+        /* General Styles */
+        body {
+            background-color: #f6f0f0;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color:rgb(243, 235, 235);
+            padding: 15px;
+            width: 100%;
+            background:#0073e6;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        form {
+            background-color: rgb(200, 198, 198);
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: black;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #0073e6;
+            box-shadow: 0 0 8px rgba(0, 115, 230, 0.5);
+            transform: scale(1.05);
+        }
+
+
+        button {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Job Seekers Application</h1>
+
+    <form id="jobSeekerForm">
+        <fieldset>
+            <legend>Job Seeker Details</legend>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" cols="40" rows="4" required></textarea>
+
+            <label for="mobnum">Mobile Number:</label>
+            <input type="number" id="mobnum" required>
+
+            <label for="mail">Email:</label>
+            <input type="email" id="mail" required>
+
+            <label for="workexp">Previous Work Experience:</label>
+            <select id="workexp">
+                <option value="exp">--- Select your experience ---</option>
+                <option value="None">None</option>
+                <option value="1">1 Year</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4+">4 Years or More</option>
+            </select>
+
+            <label for="job-role">Job Role Looking For:</label>
+            <select id="job-role">
+                <option value="role">--- Select your role ---</option>
+                <option value="frontenddeveloper">Front-end Developer</option>
+                <option value="backenddeveloper">Back-end Developer</option>
+                <option value="fullstackdeveloper">Full-stack Developer</option>
+                <option value="designer">Designer</option>
+                <option value="manager">Manager</option>
+                <option value="qa">QA Engineer</option>
+                <option value="non-tech">Non-Tech</option>
+            </select>
+
+            <label for="resume">Upload Resume:</label>
+            <input type="file" id="resume" required>
+
+            <button type="submit">Apply Now</button>
+        </fieldset>
+    </form>
+
+    <script>
+        document.getElementById("jobSeekerForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent page reload
+            
+            // Collecting form data
+            const name = document.getElementById("name").value;
+            const address = document.getElementById("address").value;
+            const mobile = document.getElementById("mobnum").value;
+            const email = document.getElementById("mail").value;
+            const experience = document.getElementById("workexp").value;
+            const jobRole = document.getElementById("job-role").value;
+            const resume = document.getElementById("resume").files[0];
+
+            // Simple validation
+            if (!name || !address || !mobile || !email || !resume) {
+                alert("Please fill all required fields.");
+                return;
+            }
+
+            // Simulate form submission (Replace this with actual backend integration)
+            alert(`Application Submitted Successfully!\n\nName: ${name}\nEmail: ${email}\nExperience: ${experience} years\nJob Role: ${jobRole}`);
+            
+            // Clear form after submission
+            document.getElementById("jobSeekerForm").reset();
+        });
+    </script>
+
+</body>
+</html>

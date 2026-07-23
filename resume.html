@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Resume - Job Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #0073e6;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+            background: #fff;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.7s ease-in-out forwards;
+        }
+
+        button {
+            background: #0073e6;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #005bb5;
+            transform: scale(1.1);
+        }
+
+        #resume-form {
+            background: #fff;
+            padding: 25px;
+            width: 50%;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        input:focus, textarea:focus {
+            box-shadow: 0 0 8px #0073e6;
+            outline: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Build Your Resume</h1>
+    </header>
+
+    <section id="resume-section">
+        <h2>Create Your Resume</h2>
+        <p>Fill in the details below to generate your resume.</p>
+    </section>
+
+    <section id="resume-form">
+        <h2>Resume Builder</h2>
+        <form id="resume-builder">
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" required>
+            <br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <br><br>
+            <label for="phone">Phone Number:</label>
+            <input type="text" placeholder="Enter 10-digit number" id="phone" pattern="\d{10}" required>
+            <br><br>
+            <label for="experience">Work Experience:</label>
+            <textarea id="experience" rows="5" required></textarea>
+            <br><br>
+            <label for="education">Education:</label>
+            <textarea id="education" rows="3" required></textarea>
+            <br><br>
+            <label for="skills">Skills:</label>
+            <textarea id="skills" rows="3" required></textarea>
+            <br><br>
+            <button type="submit">Generate Resume</button>
+            <button class="go-back" onclick="window.location.href='structure.html'">Go Back</button>
+        </form>
+        <section id="resume-output">
+            <h2>Generated Resume</h2>
+            <div class="resume-section">
+                <strong>Full Name:</strong> <p id="display-name"></p>
+            </div>
+            <div class="resume-section">
+                <strong>Email:</strong> <p id="display-email"></p>
+            </div>
+            <div class="resume-section">
+                <strong>Phone:</strong> <p id="display-phone"></p>
+            </div>
+            <div class="resume-section">
+                <strong>Work Experience:</strong> <p id="display-experience"></p>
+            </div>
+            <div class="resume-section">
+                <strong>Education:</strong> <p id="display-education"></p>
+            </div>
+            <div class="resume-section">
+                <strong>Skills:</strong> <p id="display-skills"></p>
+            </div>
+        </section>
+    </section>
+
+    <footer>
+        <p style="text-align: center;">&copy; 2025 Job Portal. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById("resume-builder").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            let name = document.getElementById("full-name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let experience = document.getElementById("experience").value;
+            let education = document.getElementById("education").value;
+            let skills = document.getElementById("skills").value;
+
+            // Display values
+            document.getElementById("display-name").innerText = name;
+            document.getElementById("display-email").innerText = email;
+            document.getElementById("display-phone").innerText = phone;
+            document.getElementById("display-experience").innerText = experience;
+            document.getElementById("display-education").innerText = education;
+            document.getElementById("display-skills").innerText = skills;
+
+            // Show the resume output section
+            document.getElementById("resume-output").style.display = "block";
+        });
+    </script>
+
+</body>
+</html>

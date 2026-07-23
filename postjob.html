@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Posting Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+            transform: scale(1.05);
+        }
+
+        .go-back {
+            background-color: #bbb;
+        }
+
+        .go-back:hover {
+            background-color: #999;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Post a Job</h2>
+        <form id="job-form">
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input type="text" id="position" name="position" required>
+            </div>
+            <div class="form-group">
+                <label for="company-name">Company Name</label>
+                <input type="text" id="company-name" name="company-name" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Required Work Experience (in years)</label>
+                <input type="number" id="experience" name="experience" required>
+            </div>
+            <div class="form-group">
+                <label for="skills">Prerequisites/skills</label>
+                <input type="text" id="skills" name="skills" required>
+            </div>
+            <h2>Contact here</h2>
+            <div class="form-group">
+                <label for="mail">Email</label>
+                <input type="email" id="mail" name="mail" required>
+            </div>
+            <button type="submit">Post Job</button>
+            <button class="go-back" onclick="window.location.href='structure.html'">Go Back</button>
+
+
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('job-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission for demo purposes
+
+            const position = document.getElementById('position').value;
+            const companyName = document.getElementById('company-name').value;
+            const experience = document.getElementById('experience').value;
+
+            if (position && companyName && experience) {
+                alert('Job posted successfully!');
+                document.getElementById('job-form').reset(); // Clear the form
+            } else {
+                alert('Please fill out all fields!');
+            }
+        });
+    </script>
+</body>
+</html>
